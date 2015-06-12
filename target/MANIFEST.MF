@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: josepha
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: org.joseph.jj
+Build-Jdk: 1.7.0_80
+Built-By: j
+Created-By: IntelliJ IDEA
+Main-Class: jjzee.JosephaApplication
+
