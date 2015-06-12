@@ -1,8 +1,6 @@
 package repository;
 
 import jjzee.JosephaApplication;
-import jjzee.conf.factory.mongoDbConfig.MongoConfig;
-
 import jjzee.domain.Benifits;
 import jjzee.domain.Person;
 import jjzee.domain.Position;
@@ -19,23 +17,15 @@ import jjzee.repository.mongo.BenifitsMongoRepo;
 import jjzee.repository.mongo.PersonMongoRepo;
 import jjzee.repository.mongo.PositionMongoRepo;
 import jjzee.repository.mongo.ValueMongoRepo;
-import junit.framework.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.testng.annotations.Test;
-import sun.security.util.BigInt;
 
-import java.math.BigInteger;
-import java.sql.*;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Created by j on 2015/06/08.
@@ -75,6 +65,7 @@ public class ToMongo extends AbstractTestNGSpringContextTests {
 
     @Test
     public void move(){
+
         for(Benifits b : benifitsRepo.findAll()){
             benifitsList.add(b);
         }
@@ -86,6 +77,8 @@ public class ToMongo extends AbstractTestNGSpringContextTests {
         }
 
         try {
+            long start = System.currentTimeMillis();
+
             for (Value v : valueRepo.findAll()) {
                  ValueMongo valueMongo = new ValueMongo.
                         Builder(v.getCode()).description(v.getDescription()).
@@ -116,11 +109,10 @@ public class ToMongo extends AbstractTestNGSpringContextTests {
                             }
                         }
                     }
-
                 }
-
-                System.out.println("made it to loop end -----------------------------------------");
             }
+            long end = System.currentTimeMillis();
+            System.out.println(end - start + " : MilliSeconds");
         }catch (Exception ex){
                 ex.printStackTrace();
             }

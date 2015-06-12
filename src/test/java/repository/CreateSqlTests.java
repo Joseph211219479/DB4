@@ -51,24 +51,24 @@ public class CreateSqlTests extends AbstractTestNGSpringContextTests {
             userlist.add(user);
 */
 
-        for(int i =1 ; i< 100 ; i++){
-            Value value = new Value.Builder(objRandom.nextInt()).description("this is discription").build();
+        for(int i =1 ; i< 50 ; i++){
+            Value value = new Value.Builder(objRandom.nextInt()).description("wow").build();
             valueRepo.save(value);
             id= value.getId();
-            Benifits benifits = new Benifits.Builder(objRandom.nextInt()).description("this is description").value(valueRepo.findOne(id)).build();
+            Benifits benifits = new Benifits.Builder(objRandom.nextInt()).description("the jazz fest").value(valueRepo.findOne(id)).build();
             benifitsRepo.save(benifits);
             id = null;
             id=benifits.getId();
-            Position position = new Position.Builder(objRandom.nextInt()).benifits(benifitsRepo.findOne(id)).name("manager").description("manages stuff").build();
+            Position position = new Position.Builder(objRandom.nextInt()).benifits(benifitsRepo.findOne(id)).name("chill").description("chiling").build();
             positionRepo.save(position);
             id=null;
             id=position.getId();
-            Person person = new Person.Builder(objRandom.nextInt()).name("Ackona").password("whatthat").position(positionRepo.findOne(id)).build();
+            Person person = new Person.Builder(objRandom.nextInt()).name("jhgsdgksh").password("fs").position(positionRepo.findOne(id)).build();
             personRepo.save(person);
         }
 
 
-        Assert.assertTrue(personRepo.count() > 100);
+        Assert.assertTrue(personRepo.count() > 40);
 
 
            /* department = new Department.Builder(objRandom.nextInt()).adminList(adminlist).name("cake").userList(userlist).build();

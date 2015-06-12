@@ -36,7 +36,8 @@ public class ValueMongo {
         public Builder(int code){
             this.code = code;
         }
-        public  Builder description(String description){
+
+        public Builder description(String description){
             this.description = description;
             return this;
         }
